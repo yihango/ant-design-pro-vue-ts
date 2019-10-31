@@ -2,11 +2,12 @@ import {Component, Prop, Vue, Watch, Emit, Provide, Inject, Mixins} from 'vue-pr
 import { deviceEnquire, DEVICE_TYPE } from '@/utils/device';
 import { State, Action, Getter } from 'vuex-class';
 import {mapState} from 'vuex';
+import Mixin from './mixin';
 
 @Component({
     components: {},
 })
-export default class MixinDevice extends Vue {
+export default class MixinDevice extends Mixin {
 
     @State(state=>state.app.device)
     public device!:string;

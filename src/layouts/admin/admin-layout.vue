@@ -61,13 +61,12 @@
 
 <script lang="ts">
   import {Component} from 'vue-property-decorator';
-  import {mixins} from 'vue-class-component';
   import AdminLayoutComponent from './admin-layout.component';
 
   @Component({
     components:{},
   })
-  export default  class AdminLayout extends mixins(AdminLayoutComponent) {
+  export default  class AdminLayout extends AdminLayoutComponent {
     constructor(){
       super();
     }

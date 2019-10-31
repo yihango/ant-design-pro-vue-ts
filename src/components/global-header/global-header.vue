@@ -31,7 +31,6 @@
   import SMenu from "../menu/";
   import Logo from "../tools/logo.vue";
   import {Component, Prop} from "vue-property-decorator";
-  import {mixins} from "vue-class-component";
   import Mixin from "@/shared/mixins/mixin";
 
   @Component({
@@ -41,7 +40,7 @@
       Logo,
     },
   })
-  export default class GlobalHeader extends mixins(Mixin) {
+  export default class GlobalHeader extends Mixin {
     @Prop({type: String, default: "sidemenu"})
     public mode: number;
     @Prop({type: Array, required: true})

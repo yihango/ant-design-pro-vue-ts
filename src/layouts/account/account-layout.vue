@@ -31,13 +31,12 @@
 
 <script lang="ts">
   import {Component} from 'vue-property-decorator';
-  import {mixins} from 'vue-class-component';
   import AccountLayoutComponent from './account-layout.component';
 
   @Component({
     components:{},
   })
-  export default  class AccountLayout extends mixins(AccountLayoutComponent) {
+  export default  class AccountLayout extends AccountLayoutComponent {
     constructor(){
       super();
     }

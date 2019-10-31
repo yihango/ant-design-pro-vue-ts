@@ -110,13 +110,12 @@
 
 <script lang="ts">
   import {Component} from "vue-property-decorator";
-  import {mixins} from "vue-class-component";
   import LoginComponent from "./login.component";
 
   @Component({
     components: {},
   })
-  export default class Login extends mixins(LoginComponent) {
+  export default class Login extends LoginComponent {
     constructor() {
       super();
     }

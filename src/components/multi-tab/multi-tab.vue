@@ -26,7 +26,7 @@
 -->
 
 <script lang="tsx">
-    import {Component, Prop, Vue,Watch,Emit,Provide,Inject,Mixins} from "vue-property-decorator";
+    import {Component, Prop, Vue,Watch,Emit,Provide,Inject} from "vue-property-decorator";
 
     @Component({
         components: {},

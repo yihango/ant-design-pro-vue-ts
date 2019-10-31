@@ -20,11 +20,9 @@
 <script lang="ts">
     import Logo from '@/components/tools/logo.vue'
     import SMenu from './index'
-    import { mixins } from 'vue-class-component';
-    import Mixin from '@/shared/mixins/mixin';
     import MixinDevice from '@/shared/mixins/mixin-device';
 
-    import {Component, Prop, Vue,Watch,Emit,Provide,Inject,Mixins} from "vue-property-decorator";
+    import {Component, Prop, Vue,Watch,Emit,Provide,Inject} from "vue-property-decorator";
 
     @Component({
         components: {
@@ -32,7 +30,7 @@
             SMenu,
         },
     })
-    export default class SideMenu extends mixins(Mixin,MixinDevice) {
+    export default class SideMenu extends MixinDevice {
         @Prop({type: String, default: 'inline',required: false})
         public  mode: string;
         @Prop({type: String, default: 'dark',required: false})

@@ -7,13 +7,12 @@
 
 <script lang="ts">
   import {Component} from "vue-property-decorator";
-  import {mixins} from "vue-class-component";
   import DemoComponent from "./demo.component";
 
   @Component({
     components: {},
   })
-  export default class Demo extends mixins(DemoComponent) {
+  export default class Demo extends DemoComponent {
     constructor() {
       super();
     }

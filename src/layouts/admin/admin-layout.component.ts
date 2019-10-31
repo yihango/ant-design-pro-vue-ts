@@ -9,15 +9,14 @@ import GlobalHeader from '@/components/global-header'
 import GlobalFooter from '@/components/global-footer'
 import SettingDrawer from '@/components/setting-drawer'
 
-import {Component, Prop, Vue,Watch,Emit,Provide,Inject,Mixins} from "vue-property-decorator";
-import { mixins } from 'vue-class-component';
+import { Component, Prop, Vue, Watch, Emit, Provide, Inject, Mixins } from "vue-property-decorator";
 import Mixin from '@/shared/mixins/mixin';
 import MixinDevice from '@/shared/mixins/mixin-device';
-import {State} from 'vuex-class';
+import { State } from 'vuex-class';
 
 
 @Component({
-  components:{
+  components: {
     RouteView,
     MultiTab,
     SideMenu,
@@ -26,8 +25,8 @@ import {State} from 'vuex-class';
     SettingDrawer,
   },
 })
-export default  class AdminLayoutComponent extends mixins(Mixin,MixinDevice) {
-  get contentPaddingLeft () {
+export default class AdminLayoutComponent extends MixinDevice {
+  get contentPaddingLeft() {
     if (!this.fixSiderbar || this.isMobile()) {
       return '0'
     }
@@ -37,24 +36,24 @@ export default  class AdminLayoutComponent extends mixins(Mixin,MixinDevice) {
     return '80px'
   }
 
-  @State(state=> state.permission.addRouters)
-  mainMenu:any[];
+  @State(state => state.permission.addRouters)
+  mainMenu: any[];
 
-  public production= config.production;
-  public collapsed= false;
-  public menus: any[]=[];
+  public production = config.production;
+  public collapsed = false;
+  public menus: any[] = [];
 
 
   constructor() {
     super();
   }
 
-  created () {
+  created() {
     this.menus = this.mainMenu.find(item => item.path === '/').children
     this.collapsed = !this.sidebarOpened
   }
 
-  mounted () {
+  mounted() {
     const userAgent = navigator.userAgent
     if (userAgent.indexOf('Edge') > -1) {
       this.$nextTick(() => {
@@ -67,17 +66,17 @@ export default  class AdminLayoutComponent extends mixins(Mixin,MixinDevice) {
   }
 
   @Watch('sidebarOpened')
-  sidebarOpenedChanged (val) {
+  sidebarOpenedChanged(val) {
     this.collapsed = !val
   }
 
-  toggle () {
+  toggle() {
     this.collapsed = !this.collapsed
     this.setSidebar(!this.collapsed)
     triggerWindowResizeEvent()
   }
 
-  paddingCalc () {
+  paddingCalc() {
     let left = ''
     if (this.sidebarOpened) {
       left = this.isDesktop() ? '256px' : '80px'
@@ -87,13 +86,13 @@ export default  class AdminLayoutComponent extends mixins(Mixin,MixinDevice) {
     return left
   }
 
-  menuSelect () {
+  menuSelect() {
     if (!this.isDesktop()) {
       this.collapsed = false
     }
   }
 
-  drawerClose () {
+  drawerClose() {
     this.collapsed = false
   }
 
