@@ -12,7 +12,7 @@ import { ACCESS_TOKEN } from '@/store/mutation-types'
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
 const whiteList = ['login', 'register', 'registerResult'] // no redirect whitelist
-const v=Vue as any
+const v = Vue as any
 
 router.beforeEach((to, from, next) => {
   NProgress.start() // start progress bar
