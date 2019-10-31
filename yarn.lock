@@ -6628,6 +6628,11 @@ nprogress@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/nprogress/-/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
 
+nswag@^13.1.3:
+  version "13.1.3"
+  resolved "https://registry.yarnpkg.com/nswag/-/nswag-13.1.3.tgz#9f7944769af4c43e25e2e452c76fe5e4f29c5afd"
+  integrity sha512-9gQrJ+NO1co1UCnDuTjpMrtQ8cPW2HLINZkYuoZeQAG15225KhaeKRhh67c0fu0CJQGUGXoaKZe2dxOAutjWfg==
+
 nth-check@^1.0.2, nth-check@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/nth-check/-/nth-check-1.0.2.tgz#b2bd295c37e3dd58a3bf0700376663ba4d9cf05c"
