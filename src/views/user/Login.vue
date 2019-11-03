@@ -279,26 +279,22 @@ export default {
       });
     },
     loginSuccess(res) {
-      console.log(res);
-      // check res.homePage define, set $router.push name res.homePage
-      // Why not enter onComplete
-      /*
-      this.$router.push({ name: 'analysis' }, () => {
-        console.log('onComplete')
-        this.$notification.success({
-          message: '欢迎',
-          description: `${timeFix()}，欢迎回来`
-        })
-      })
-      */
-      this.$router.push({ path: "/" });
-      // 延迟 1 秒显示欢迎信息
-      setTimeout(() => {
-        this.$notification.success({
-          message: "欢迎",
-          description: `${timeFix()}，欢迎回来`
-        });
-      }, 1000);
+      /**
+       * TODO: 这里跳转会进入err函数,因为初始化 $router 时没有加入 path 为 / 的路由,跳转无法匹配到
+       * 但是会在 permission.js 中根据url redirect 信息重定向到正常页面,所以这里认为是正常的跳转
+       */
+      this.$router.push(
+        { path: "/" },
+        () => {
+          // 这里不会触发
+        },
+        err => {
+          this.$notification.success({
+            message: "欢迎",
+            description: `${timeFix()}，欢迎回来`
+          });
+        }
+      );
       this.isLoginError = false;
     },
     requestFailed(err) {
