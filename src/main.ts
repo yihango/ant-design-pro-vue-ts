@@ -1,28 +1,37 @@
-// ie polyfill
-import '@babel/polyfill';
-
+import '@babel/polyfill'; // ie polyfill
 import Vue from 'vue';
-import App from './App.vue';
-import router from './router';
-import store from './store/';
-import { VueAxios } from './utils/request';
+import VueRouter from 'vue-router';
+import {Store} from 'vuex';
 // mock
 import './mock';
 
-import bootstrap from './core/bootstrap';
+
+import {VueAxios} from './utils/request'; // 请求
+import appRouter from './router'; // 路由
+import appStore from './store/'; // vuex store
+import appBootstrap from './core/bootstrap'; // 启动器
 import './core/use';
-import './permission'; // permission control
-import './utils/filter'; // global filter
+import './permission'; // 权限
+import './utils/filter'; // 全局过滤
+import App from './App.vue'; // 主页面
+
 
 Vue.config.productionTip = false;
 
-// mount axios Vue.$http and this.$http
+
+// 挂载使用 axios 做http请求库,调用方式 Vue.$http 或者 this.$http
 Vue.use(VueAxios);
 
+
+// 路由 和 vuex store 的类型转换
+const router: VueRouter = appRouter;
+const store: Store<any> = appStore;
+
+
+// 初始化 app 容器的 Vue 对象
 new Vue({
-  // @ts-ignore
-  router,
-  store,
-  created: bootstrap,
+  router: router,
+  store: store,
+  created: appBootstrap,
   render: h => h(App)
 }).$mount('#app');
