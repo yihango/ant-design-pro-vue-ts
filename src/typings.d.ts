@@ -1,10 +1,2 @@
-// import VueRouter, { RawLocation, RouterOptions } from '../node_modules/vue-router';
-
-// declare class TsVueRouter extends VueRouter {
-//     constructor(options?: RouterOptions);
-//     goto: (
-//         location: RawLocation,
-//         onComplete?: Function,
-//         onAbort?: any
-//     ) => void;
-// }
+// 第三方包的 typescript 定义
+///<reference path="../types/vue-ls/index.d.ts"/>
