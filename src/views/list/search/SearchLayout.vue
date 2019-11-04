@@ -39,16 +39,16 @@ export default {
         callback: (key) => {
           switch (key) {
             case '1':
-              this.$router.push('/list/search/article')
+              this.$router.goto('/list/search/article')
               break
             case '2':
-              this.$router.push('/list/search/project')
+              this.$router.goto('/list/search/project')
               break
             case '3':
-              this.$router.push('/list/search/application')
+              this.$router.goto('/list/search/application')
               break
             default:
-              this.$router.push('/workplace')
+              this.$router.goto('/workplace')
           }
         }
       },

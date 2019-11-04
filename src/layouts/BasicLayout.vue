@@ -28,7 +28,10 @@
       :collapsible="true"
     ></side-menu>
 
-    <a-layout :class="[layoutMode, `content-width-${contentWidth}`]" :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }">
+    <a-layout
+      :class="[layoutMode, `content-width-${contentWidth}`]"
+      :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }"
+    >
       <!-- layout header -->
       <global-header
         :mode="layoutMode"
@@ -40,8 +43,10 @@
       />
 
       <!-- layout content -->
-      <a-layout-content :style="{ height: '100%', margin: '24px 24px 0', paddingTop: fixedHeader ? '64px' : '0' }">
-        <multi-tab v-if="multiTab"></multi-tab>
+      <a-layout-content
+        :style="{ height: '100%', margin: '24px 24px 0', paddingTop: fixedHeader ? '64px' : '0' }"
+      >
+        <multi-tab v-if="useMultiTab"></multi-tab>
         <transition name="page-transition">
           <route-view />
         </transition>
@@ -56,23 +61,22 @@
       <setting-drawer v-if="!production"></setting-drawer>
     </a-layout>
   </a-layout>
-
 </template>
 
 <script>
-import { triggerWindowResizeEvent } from '@/utils/util'
-import { mapState, mapActions } from 'vuex'
-import { mixin, mixinDevice } from '@/utils/mixin'
-import config from '@/config/defaultSettings'
+import { triggerWindowResizeEvent } from "@/utils/util";
+import { mapState, mapActions } from "vuex";
+import { mixin, mixinDevice } from "@/utils/mixin";
+import config from "@/config/defaultSettings";
 
-import RouteView from './RouteView'
-import SideMenu from '@/components/Menu/SideMenu'
-import GlobalHeader from '@/components/GlobalHeader'
-import GlobalFooter from '@/components/GlobalFooter'
-import SettingDrawer from '@/components/SettingDrawer'
+import RouteView from "./RouteView";
+import SideMenu from "@/components/Menu/SideMenu";
+import GlobalHeader from "@/components/GlobalHeader";
+import GlobalFooter from "@/components/GlobalFooter";
+import SettingDrawer from "@/components/SettingDrawer";
 
 export default {
-  name: 'BasicLayout',
+  name: "BasicLayout",
   mixins: [mixin, mixinDevice],
   components: {
     RouteView,
@@ -81,75 +85,77 @@ export default {
     GlobalFooter,
     SettingDrawer
   },
-  data () {
+  data() {
     return {
       production: config.production,
       collapsed: false,
       menus: []
-    }
+    };
   },
   computed: {
     ...mapState({
       // 动态主路由
       mainMenu: state => state.permission.addRouters
     }),
-    contentPaddingLeft () {
+    useMultiTab(){
+      return config.multiTab;
+    },
+    contentPaddingLeft() {
       if (!this.fixSidebar || this.isMobile()) {
-        return '0'
+        return "0";
       }
       if (this.sidebarOpened) {
-        return '256px'
+        return "256px";
       }
-      return '80px'
+      return "80px";
     }
   },
   watch: {
-    sidebarOpened (val) {
-      this.collapsed = !val
+    sidebarOpened(val) {
+      this.collapsed = !val;
     }
   },
-  created () {
-    this.menus = this.mainMenu.find(item => item.path === '/').children
-    this.collapsed = !this.sidebarOpened
+  created() {
+    this.menus = this.mainMenu.find(item => item.path === "/").children;
+    this.collapsed = !this.sidebarOpened;
   },
-  mounted () {
-    const userAgent = navigator.userAgent
-    if (userAgent.indexOf('Edge') > -1) {
+  mounted() {
+    const userAgent = navigator.userAgent;
+    if (userAgent.indexOf("Edge") > -1) {
       this.$nextTick(() => {
-        this.collapsed = !this.collapsed
+        this.collapsed = !this.collapsed;
         setTimeout(() => {
-          this.collapsed = !this.collapsed
-        }, 16)
-      })
+          this.collapsed = !this.collapsed;
+        }, 16);
+      });
     }
   },
   methods: {
-    ...mapActions(['setSidebar']),
-    toggle () {
-      this.collapsed = !this.collapsed
-      this.setSidebar(!this.collapsed)
-      triggerWindowResizeEvent()
+    ...mapActions(["setSidebar"]),
+    toggle() {
+      this.collapsed = !this.collapsed;
+      this.setSidebar(!this.collapsed);
+      triggerWindowResizeEvent();
     },
-    paddingCalc () {
-      let left = ''
+    paddingCalc() {
+      let left = "";
       if (this.sidebarOpened) {
-        left = this.isDesktop() ? '256px' : '80px'
+        left = this.isDesktop() ? "256px" : "80px";
       } else {
-        left = (this.isMobile() && '0') || ((this.fixSidebar && '80px') || '0')
+        left = (this.isMobile() && "0") || ((this.fixSidebar && "80px") || "0");
       }
-      return left
+      return left;
     },
-    menuSelect () {
-    },
-    drawerClose () {
-      this.collapsed = false
+    menuSelect() {},
+    drawerClose() {
+      this.collapsed = false;
     }
   }
-}
+};
 </script>
 
 <style lang="less">
-@import url('../components/global.less');
+@import url("../components/global.less");
 
 /*
  * The following styles are auto-applied to elements with

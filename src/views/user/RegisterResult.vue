@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     goHomeHandle () {
-      this.$router.push({ name: 'login' })
+      this.$router.goto({ name: 'login' })
     }
   }
 }

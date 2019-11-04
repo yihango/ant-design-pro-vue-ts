@@ -78,7 +78,7 @@ export default {
   }),
   watch: {
     'localPagination.current' (val) {
-      this.pageURI && this.$router.push({
+      this.pageURI && this.$router.goto({
         ...this.$route,
         name: this.$route.name,
         params: Object.assign({}, this.$route.params, {

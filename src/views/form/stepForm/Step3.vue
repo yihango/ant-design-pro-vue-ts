@@ -47,7 +47,7 @@ export default {
       this.$emit('finish')
     },
     toOrderList () {
-      this.$router.push('/list/table-list')
+      this.$router.goto('/list/table-list')
     }
   }
 }
