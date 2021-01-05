@@ -23,7 +23,7 @@
     "@types/qs": "^6.5.1",
     "abp-web-resources": "3.8.2",
     "ant-design-vue": "1.4.4",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "date-fns": "^1.29.0",
     "echarts": "^4.2.0-rc.2",
     "enquire.js": "^2.1.6",
