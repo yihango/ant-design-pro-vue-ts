@@ -35,7 +35,7 @@
     "lodash.pick": "^4.4.0",
     "md5": "^2.2.1",
     "moment": "^2.24.0",
-    "moment-timezone": "^0.5.21",
+    "moment-timezone": "^0.5.35",
     "nprogress": "^0.2.0",
     "numeral": "^2.0.6",
     "qs": "^6.5.2",
